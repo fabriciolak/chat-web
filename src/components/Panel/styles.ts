@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components'
 
+interface IconButtonProps {
+  iconBg: string
+}
+
 export const Container = styled.aside`
   ${({ theme }) => css`
     width: 21.8125rem;
@@ -9,7 +13,7 @@ export const Container = styled.aside`
     display: flex;
     flex-direction: column;
 
-    border-right: 1px solid rgba(0, 0, 0, .1);
+    border: 1px solid rgba(0, 0, 0, .1);
   `}
 `
 
@@ -27,6 +31,9 @@ export const PanelHeader = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
     span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 1.25rem;
       font-weight: 600;
       line-height: 1.5;
@@ -62,7 +69,7 @@ export const SearchContainer = styled.div`
       outline: none;
       background-color: ${theme['bg-color']};
 
-      font-size: 1rem;
+      font-size: 0.875rem;
       font-weight: 400;
       line-height: 1.5;
       color: rgba(0, 0, 0, .4);
@@ -70,19 +77,8 @@ export const SearchContainer = styled.div`
   }
 `
 
-export const PlusButton = styled.a`
-  ${({ theme }) => css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 2.0625rem;
-    height: 2.0625rem;
-
-    border-radius: 50%;
+export const Icon = styled.a<IconButtonProps>`
+  ${({ theme, iconBg }) => css`
     
-    background-color: ${theme['message-bg-purple']};
-    color: ${theme['white']};
-    cursor: pointer;
   `}
 `

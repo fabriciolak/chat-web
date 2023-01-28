@@ -1,26 +1,25 @@
-import { Plus } from 'phosphor-react'
-import { Chat } from '../Chat';
-import { Container, Conversations, PanelHeader, PlusButton, SearchContainer } from "./styles";
+import { Plus } from "phosphor-react";
+import { Button } from "../Button";
+import { Container, PanelHeader, Icon } from "./styles";
 
-export function Panel() {
+interface PanelProps {
+  children: React.ReactNode | React.ReactNode[]
+  title: string
+
+  badge?: boolean
+  badgeValue?: string | number
+  badgeBackground?: string
+}
+
+export function Panel({ title, children, badge = false, badgeValue, badgeBackground }:PanelProps) {
   return (
     <Container>
       <PanelHeader>
-        <span>Messages</span>
-        <PlusButton href='/'>
-          <Plus size={23} weight="bold" />
-        </PlusButton>
+        <span>{title} {badge && (<Button size="small" bgColor={badgeBackground}>{badgeValue}</Button>)}</span>
+        <Button size="medium" variant="rounded"><Plus size={23} weight="bold" /></Button>
       </PanelHeader>
-      
-      <SearchContainer>
-        <input type="text" placeholder='Search messages' />
-      </SearchContainer>
 
-      <Conversations>  
-        <Chat />
-        <Chat />
-        <Chat />
-      </Conversations>
+      {children}
     </Container>
   )
 }
